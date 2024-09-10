@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
+  before_action :set_board
   before_action :set_list, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_board, only: [ :index, :new, :create ]
+
   def index
     @lists = @board.lists
   end
@@ -9,12 +10,13 @@ class ListsController < ApplicationController
   end
 
   def new
+    @list = @board.lists.build
   end
 
   def create
     @list = @board.lists.build(list_params)
     if @list.save
-      redirect_to board_list_path(@board, @list), notice: "List was successfully created."
+      redirect_to organization_board_path(@board.organization, @board), notice: "List was successfully created."
     else
       render :new
     end
@@ -25,7 +27,7 @@ class ListsController < ApplicationController
 
   def update
     if @list.update(list_params)
-      redirect_to board_list_path(@board, @list), notice: "List was successfully updated."
+      redirect_to organization_board_path(@board.organization, @board), notice: "List was successfully updated."
     else
       render :edit
     end
@@ -33,20 +35,20 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to board_lists_path(@board), notice: "List was successfully destroyed."
+    redirect_to organization_board_path(@board.organization, @board), notice: "List was successfully destroyed."
   end
 
   private
-
-  def set_list
-    @list = List.find(params[:id])
-  end
 
   def set_board
     @board = Board.find(params[:board_id])
   end
 
+  def set_list
+    @list = @board.lists.find(params[:id])
+  end
+
   def list_params
-    params.require(:list).permit(:name, :position, :board_id)
+    params.require(:list).permit(:name, :position)
   end
 end

@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
+  before_action :set_organization
   before_action :set_board, only: [ :show, :edit, :update, :destroy ]
+
   def index
     @boards = @organization.boards
   end
@@ -20,9 +22,12 @@ class BoardsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
     if @board.update(board_params)
-      redirect_to organization_board_path(@board.organization, @board), notice: "Board was successfully updated."
+      redirect_to organization_board_path(@organization, @board), notice: "Board was successfully updated."
     else
       render :edit
     end
@@ -30,10 +35,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to organization_boards_path(@board.organization), notice: "Board was successfully destroyed."
-  end
-
-  def destroy
+    redirect_to organization_boards_path(@organization), notice: "Board was successfully destroyed."
   end
 
   private
@@ -47,6 +49,6 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:name, :description, :visibility, :organization_id)
+    params.require(:board).permit(:name, :description, :visibility)
   end
 end

@@ -1,4 +1,30 @@
-<div>
-  <h1 class="font-bold text-4xl">Organizations#show</h1>
-  <p>Find me in app/views/organizations/show.html.erb</p>
+<div class="flex flex-col">
+  <h1><%= @organization.name %></h1>
+  <p>Description: <%= @organization.description %></p>
+
+  <h2>Members</h2>
+  <ul>
+    <% @organization.memberships.includes(:user).each do |membership| %>
+      <li>
+        <%= membership.user.email %> - <%= membership.role.humanize %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2>Invite User</h2>
+  <%= form_with url: organization_memberships_path(@organization), local: true do |f| %>
+    <%= f.label :user_id, "Invite Member" %>
+    <%= f.collection_select 'membership[user_id]', User.all, :id, :email, prompt: "Select a user" %>
+    <%= f.label :role %>
+    <%= f.select 'membership[role]', Membership.roles.keys.map { |role| [role.humanize, role] }, prompt: "Select a role" %>
+    <%= f.submit "Invite User" %>
+  <% end %>
+
+  <h2>Boards</h2>
+  <%= link_to "Create Board", new_organization_board_path(@organization), class: "text-black text-center bg-gray-300 p-2 rounded-md w-24" %>
+  <ul>
+    <% @organization.boards.each do |board| %>
+      <li><%= link_to board.name, organization_board_path(@organization, board) %></li>
+    <% end %>
+  </ul>
 </div>

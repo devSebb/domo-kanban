@@ -12,18 +12,22 @@ class MembershipsController < ApplicationController
   end
 
   def create
+    @organization = Organization.find(params[:organization_id])
     @membership = @organization.memberships.build(membership_params)
+
     if @membership.save
-      redirect_to organization_membership_path(@organization, @membership), notice: "Membership was successfully created."
+      redirect_to @organization, notice: "User invited successfully."
     else
-      render :new
+      redirect_to @organization, alert: "Failed to invite user."
     end
   end
 
   def edit
+    @organization = @membership.organization
   end
 
   def update
+    @organization = @membership.organization
     if @membership.update(membership_params)
       redirect_to organization_membership_path(@organization, @membership), notice: "Membership was successfully updated."
     else
@@ -32,6 +36,7 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
+    @organization = @membership.organization
     @membership.destroy
     redirect_to organization_memberships_path(@organization), notice: "Membership was successfully destroyed."
   end
@@ -47,6 +52,6 @@ class MembershipsController < ApplicationController
   end
 
   def membership_params
-    params.require(:membership).permit(:user_id, :organization_id, :role)
+    params.require(:membership).permit(:user_id, :role)
   end
 end

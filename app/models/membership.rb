@@ -1,7 +1,7 @@
 class Membership < ApplicationRecord
   belongs_to :user
-  belongs_to :organization, optional: true
-  belongs_to :board, optional: true
+  belongs_to :organization
 
-  enum role: [ :member, :admin ]
+  enum role: { member: "member", admin: "admin", owner: "owner" }
+
 end

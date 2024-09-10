@@ -1,0 +1,7 @@
+<%= form_with model: [@organization, @membership] do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.submit %>
+<% end %>

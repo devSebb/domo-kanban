@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :organizations do
+    resources :memberships
     resources :boards do
       resources :lists do
         resources :cards
