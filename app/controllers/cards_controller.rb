@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_list, only: [ :new, :create ]
+  before_action :set_list
+
   def index
     @cards = @list.cards
   end
@@ -15,9 +15,9 @@ class CardsController < ApplicationController
   def create
     @card = @list.cards.build(card_params)
     if @card.save
-      redirect_to organization_board_list_card_path(@list.organization, @list.board, @list, @card), notice: "Card was successfully created."
+      redirect_to organization_board_path(@list.board.organization, @list.board), notice: "Card was successfully created."
     else
-      render :new
+      redirect_to organization_board_path(@list.board.organization, @list.board), alert: "Failed to create card."
     end
   end
 
@@ -37,15 +37,11 @@ class CardsController < ApplicationController
 
   private
 
-  def set_card
-    @card = Card.find(params[:id])
-  end
-
   def set_list
     @list = List.find(params[:list_id])
   end
 
   def card_params
-    params.require(:card).permit(:title, :description, :position, :due_date, :list_id, :assigned_user_id)
+    params.require(:card).permit(:title, :description, :position, :due_date, :assigned_user_id)
   end
 end

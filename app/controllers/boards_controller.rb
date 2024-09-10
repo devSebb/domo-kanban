@@ -7,6 +7,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @lists = @board.lists.includes(:cards)
   end
 
   def new
