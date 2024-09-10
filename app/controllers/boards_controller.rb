@@ -1,0 +1,52 @@
+class BoardsController < ApplicationController
+  before_action :set_board, only: [ :show, :edit, :update, :destroy ]
+  def index
+    @boards = @organization.boards
+  end
+
+  def show
+  end
+
+  def new
+    @board = @organization.boards.build
+  end
+
+  def create
+    @board = @organization.boards.build(board_params)
+    if @board.save
+      redirect_to organization_board_path(@organization, @board), notice: "Board was successfully created."
+    else
+      render :new
+    end
+  end
+
+  def update
+    if @board.update(board_params)
+      redirect_to organization_board_path(@board.organization, @board), notice: "Board was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @board.destroy
+    redirect_to organization_boards_path(@board.organization), notice: "Board was successfully destroyed."
+  end
+
+  def destroy
+  end
+
+  private
+
+  def set_board
+    @board = Board.find(params[:id])
+  end
+
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+
+  def board_params
+    params.require(:board).permit(:name, :description, :visibility, :organization_id)
+  end
+end
