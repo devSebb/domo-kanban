@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_10_023626) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_10_032255) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_10_023626) do
     t.index ["list_id"], name: "index_cards_on_list_id"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.bigint "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_labels_on_card_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.integer "position"
@@ -49,8 +58,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_10_023626) do
 
   create_table "memberships", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "organization_id", null: false
-    t.bigint "board_id", null: false
+    t.bigint "organization_id"
+    t.bigint "board_id"
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -87,6 +96,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_10_023626) do
   add_foreign_key "boards", "organizations"
   add_foreign_key "cards", "lists"
   add_foreign_key "cards", "users", column: "assigned_user_id"
+  add_foreign_key "labels", "cards"
   add_foreign_key "lists", "boards"
   add_foreign_key "memberships", "boards"
   add_foreign_key "memberships", "organizations"
