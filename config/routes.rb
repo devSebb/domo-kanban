@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :cards, only: [] do
+    member do
+      patch :update_position
+    end
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Render dynamic PWA files from app/views/pwa/*

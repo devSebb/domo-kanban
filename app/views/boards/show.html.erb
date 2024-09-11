@@ -27,6 +27,7 @@
               method: :delete,
               data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" },
               class: "btn btn-danger" %>
+          <i class="fas fa-grip-vertical text-gray-400 cursor-move mx-2 drag-handle">Drag</i>
           <button onclick="toggleCardForm('<%= list.id %>')" class="btn btn-sm btn-primary">+</button>
         </div>
 
@@ -47,18 +48,10 @@
           <% end %>
         </div>
 
-        <div class="space-y-2">
+        <div class="space-y-2 card-list" data-list-id="<%= list.id %>">
           <% list.cards.order(:position).each do |card| %>
-            <div class="bg-white p-2 rounded shadow">
-              <div class="flex justify-between items-center">
-                <h4 class="font-semibold"><%= card.title %></h4>
-                <%= link_to organization_board_list_card_path(@board.organization, @board, list, card),
-                            method: :delete,
-                            data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this card?" },
-                            class: "text-gray-500 hover:text-red-500" do %>
-                  <i class="fas fa-trash-alt text-sm">Delete</i>
-                <% end %>
-              </div>
+            <div class="card bg-white p-2 rounded shadow" data-card-id="<%= card.id %>">
+              <h4 class="font-semibold"><%= card.title %></h4>
               <p class="text-sm text-gray-600"><%= truncate(card.description, length: 50) %></p>
               <p class="text-xs text-gray-500">Due: <%= card.due_date&.strftime("%Y-%m-%d %H:%M") %></p>
               <p class="text-xs text-gray-500">Assigned to: <%= card.assigned_user&.email %></p>

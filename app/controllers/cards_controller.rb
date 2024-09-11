@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
-  before_action :set_list
-  before_action :set_card, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_list, except: [ :update_position ]
+  before_action :set_card, only: [ :show, :edit, :update, :destroy, :update_position ]
 
   def index
     @cards = @list.cards
@@ -41,6 +41,12 @@ class CardsController < ApplicationController
     end
   end
 
+  def update_position
+    @card.update(list_id: params[:card][:list_id])
+    @card.insert_at(params[:card][:position].to_i)
+    head :ok
+  end
+
   private
 
   def set_list
@@ -48,10 +54,10 @@ class CardsController < ApplicationController
   end
 
   def set_card
-    @card = @list.cards.find(params[:id])
+    @card = Card.find(params[:id])
   end
 
   def card_params
-    params.require(:card).permit(:title, :description, :position, :due_date, :assigned_user_id)
+    params.require(:card).permit(:list_id, :position)
   end
 end
