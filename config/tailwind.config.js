@@ -5,12 +5,14 @@ module.exports = {
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
+    './app/views/**/*.{erb,haml,html,slim}',
+    './node_modules/flowbite/**/*.js'
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Prompt', ...defaultTheme.fontFamily.sans],
+        // heading: ['Yellowtail', ...defaultTheme.fontFamily.sans],
       },
     },
   },
@@ -18,5 +20,10 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
+    require('flowbite/plugin')
   ]
 }
+
+// MAIN COLOR: #e1f4f0
+// SECONDARY COLOR: #f19992
+// TERTIARY COLOR: #a62759

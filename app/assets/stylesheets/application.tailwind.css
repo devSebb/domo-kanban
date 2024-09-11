@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Prompt', sans-serif;
+}
 /*
 
 @layer components {

@@ -62,3 +62,4 @@ end
 gem "tailwindcss-rails", "~> 2.7"
 gem 'devise'
 gem 'cancancan'
+gem 'acts_as_list'

@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_list
+  before_action :set_card, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @cards = @list.cards
@@ -33,12 +34,21 @@ class CardsController < ApplicationController
   end
 
   def destroy
+    if @card.destroy
+      redirect_to organization_board_path(@list.board.organization, @list.board), notice: "Card was successfully deleted."
+    else
+      redirect_to organization_board_path(@list.board.organization, @list.board), alert: "Failed to delete card."
+    end
   end
 
   private
 
   def set_list
     @list = List.find(params[:list_id])
+  end
+
+  def set_card
+    @card = @list.cards.find(params[:id])
   end
 
   def card_params

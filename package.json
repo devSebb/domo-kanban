@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "flowbite": "^2.5.1",
+    "sortablejs": "^1.15.3"
+  }
+}
