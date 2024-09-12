@@ -1,22 +1,34 @@
-<div>
-  <%= form_with model: @organization, local: true do |f| %>
-    <div class="flex flex-col w-1/2 mx-auto my-10">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<div class="flex items-center justify-center my-10 ">
+  <div class="p-4 w-1/2 max-w-md rounded-lg" style="box-shadow: 0 0 15px 5px #f19992;">
+    <h2 class="text-xl text-center font-bold mb-4">Create Organization</h2>
 
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+    <%= form_with model: @organization, local: true, class: "space-y-4" do |f| %>
+      <div class="field">
+        <%= f.label :name, class: "block font-light mb-1" %>
+        <%= f.text_field :name, class: "w-full bg-transparent border border-gray-600 rounded-md p-2 focus:border-white focus:outline-none focus:ring-1 focus:ring-white" %>
+      </div>
 
-      <h3>Invite User</h3>
+      <div class="field">
+        <%= f.label :description, class: "block font-light mb-1" %>
+        <%= f.text_area :description, class: "w-full bg-transparent border border-gray-600 rounded-md p-2 focus:border-white focus:outline-none focus:ring-1 focus:ring-white" %>
+      </div>
+
+      <h3 class="text-lg font-semibold mt-4 mb-2">Invite User</h3>
       <%= f.fields_for :memberships, @organization.memberships.build do |m| %>
-        <%= m.label :user_id, "Invite Member" %>
-        <%= m.collection_select :user_id, User.all, :id, :email, prompt: "Select a user" %>
+        <div class="field">
+          <%= m.label :user_id, "Invite Member", class: "block font-light mb-1" %>
+          <%= m.collection_select :user_id, User.all, :id, :email, { prompt: "Select a user" }, { class: "w-full bg-transparent border border-gray-600 rounded-md p-2 focus:border-white focus:outline-none focus:ring-1 focus:ring-white" } %>
+        </div>
 
-        <%= m.label :role %>
-        <%= m.select :role, Membership.roles.keys.map { |role| [role.humanize, role] }, prompt: "Select a role" %>
+        <div class="field">
+          <%= m.label :role, class: "block font-light mb-1" %>
+          <%= m.select :role, Membership.roles.keys.map { |role| [role.humanize, role] }, { prompt: "Select a role" }, { class: "w-full bg-transparent border border-gray-600 rounded-md p-2 focus:border-white focus:outline-none focus:ring-1 focus:ring-white" } %>
+        </div>
       <% end %>
 
-      <%= f.submit "Create Organization and Invite User" %>
-    </div>
-  <% end %>
+      <div class="actions flex justify-center">
+        <%= f.submit "Create Organization and Invite User", class: "w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out cursor-pointer" %>
+      </div>
+    <% end %>
+  </div>
 </div>

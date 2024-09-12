@@ -10,6 +10,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#e1f4f0',
+        secondary: '#f19992',
+        tertiary: '#a62759',
+      },
       fontFamily: {
         sans: ['Prompt', ...defaultTheme.fontFamily.sans],
         // heading: ['Yellowtail', ...defaultTheme.fontFamily.sans],

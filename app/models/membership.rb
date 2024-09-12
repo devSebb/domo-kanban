@@ -3,5 +3,4 @@ class Membership < ApplicationRecord
   belongs_to :organization
 
   enum role: { member: "member", admin: "admin", owner: "owner" }
-
 end
