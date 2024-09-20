@@ -13,10 +13,10 @@
         <%= f.text_area :description, class: "w-full bg-transparent border border-gray-600 rounded-md p-2 focus:border-white focus:outline-none focus:ring-1 focus:ring-white" %>
       </div>
 
-      <h3 class="text-lg font-semibold mt-4 mb-2">Invite User</h3>
+      <%# <h3 class="text-lg font-semibold mt-4 mb-2">Invite User</h3> %>
       <%= f.fields_for :memberships, @organization.memberships.build do |m| %>
         <div class="field">
-          <%= m.label :user_id, "Invite Member", class: "block font-light mb-1" %>
+          <%= m.label :user_id, "Invite Members", class: "block font-light mb-1" %>
           <%= m.collection_select :user_id, User.all, :id, :email, { prompt: "Select a user" }, { class: "w-full bg-transparent border border-gray-600 rounded-md p-2 focus:border-white focus:outline-none focus:ring-1 focus:ring-white" } %>
         </div>
 

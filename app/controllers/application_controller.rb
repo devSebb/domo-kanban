@@ -1,15 +1,14 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
-  before_action :set_organizations
+  before_action :authenticate_user!
+  before_action :set_organizations, if: :user_signed_in?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
   def set_organizations
-    @organizations = Organization.where(id: current_user.owned_organizations.pluck(:id))
-      .or(Organization.where(id: current_user.organizations.pluck(:id)))
-      .distinct if user_signed_in?
+    @organizations = current_user.organizations.includes(boards: :lists).distinct
   end
 
   protected

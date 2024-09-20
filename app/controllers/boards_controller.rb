@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @lists = @board.lists.includes(:cards)
+    @lists = @board.lists.where.not(id: nil)
   end
 
   def new
@@ -16,8 +16,11 @@ class BoardsController < ApplicationController
   end
 
   def create
+    @organization = Organization.find(params[:organization_id])
     @board = @organization.boards.build(board_params)
+
     if @board.save
+      @board.lists.create(name: "To-Do")
       redirect_to organization_board_path(@organization, @board), notice: "Board was successfully created."
     else
       render :new

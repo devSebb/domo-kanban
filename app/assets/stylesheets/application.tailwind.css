@@ -7,7 +7,16 @@ body {
   background-color: #e1f4f0;
 }
 
-
+.btn{
+  @apply py-2 px-4 bg-secondary text-white rounded-md;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  &:hover{
+    @apply bg-tertiary;
+    scale: 1.05;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+}
 /*
 
 @layer components {

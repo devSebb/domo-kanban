@@ -7,7 +7,7 @@ class CreateCards < ActiveRecord::Migration[7.2]
       t.integer :position
       t.references :list, null: false, foreign_key: true
       t.boolean :archived
-      t.references :assigned_user, null: false, foreign_key: { to_table: :users }
+      t.references :assigned_user, foreign_key: { to_table: :users }
 
       t.timestamps
     end

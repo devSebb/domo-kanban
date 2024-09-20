@@ -10,6 +10,8 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    # @organization = Organization.includes(boards: :lists).find(params[:id])
+    @organizations = current_user.organizations.includes(boards: :lists)
   end
 
   def new

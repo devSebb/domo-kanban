@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_12_144910) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_155724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_12_144910) do
     t.integer "position"
     t.bigint "list_id", null: false
     t.boolean "archived"
-    t.bigint "assigned_user_id", null: false
+    t.bigint "assigned_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["assigned_user_id"], name: "index_cards_on_assigned_user_id"
