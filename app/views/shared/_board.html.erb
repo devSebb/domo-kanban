@@ -39,7 +39,7 @@
                   <%= f.text_field :title, placeholder: "Card title", class: "form-input w-full" %>
                   <%= f.text_area :description, placeholder: "Description", class: "form-textarea w-full" %>
                   <%= f.datetime_field :due_date, class: "form-input w-full" %>
-                  <%= f.number_field :position, class: "form-input w-full" %>
+                  <%= f.number_field :position, placeholderclass: "form-input w-full" %>
                   <%= f.collection_select :assigned_user_id, User.all, :id, :email, { prompt: "Assign to user" }, class: "form-select w-full" %>
                   <%= f.submit "Create Card", class: "cursor-pointer w-full" %>
                 <% end %>

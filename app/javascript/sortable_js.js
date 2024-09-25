@@ -1,20 +1,30 @@
-// import Sortable from 'sortablejs/modular/sortable.complete.esm.js';
 import Sortable from 'sortablejs';
 
 document.addEventListener('turbo:load', () => {
   const cardLists = document.querySelectorAll('.card-list');
+  let updateTimer;
 
   cardLists.forEach(cardList => {
     new Sortable(cardList, {
       group: 'shared',
       animation: 150,
       draggable: '.card',
+      // Add ghostClass for better visual feedback
+      ghostClass: 'card-ghost',
+      // Use onMove to improve performance
+      onMove: function (evt) {
+        clearTimeout(updateTimer);
+      },
       onEnd: function (evt) {
         const cardId = evt.item.dataset.cardId;
         const newListId = evt.to.dataset.listId;
         const newPosition = Array.from(evt.to.children).indexOf(evt.item) + 1;
 
-        updateCardPosition(cardId, newListId, newPosition);
+        // Debounce the update
+        clearTimeout(updateTimer);
+        updateTimer = setTimeout(() => {
+          updateCardPosition(cardId, newListId, newPosition);
+        }, 300);
       }
     });
   });
