@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_organization, only: [ :show, :edit, :update, :destroy ]
-  before_action :set_boards
+  # before_action :set_boards
 
   def index
     @organizations = Organization.where(id: current_user.owned_organizations.pluck(:id))
@@ -11,7 +11,7 @@ class OrganizationsController < ApplicationController
 
   def show
     # @organization = Organization.includes(boards: :lists).find(params[:id])
-    @organizations = current_user.organizations.includes(boards: :lists)
+    # @organizations = current_user.organizations.includes(boards: :lists)
   end
 
   def new

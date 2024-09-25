@@ -26,10 +26,10 @@
                 <svg class="absolute w-11 h-11 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
               </div>
             <% end %>
-            <div class="flex flex-col">
+            <%= link_to edit_user_registration_path, class: "flex flex-col hover:bg-gray-100 dark:hover:bg-gray-700 rounded p-1" do %>
               <p class="text-sm font-medium text-gray-900 dark:text-white"><%= current_user.first_name %> <%= current_user.last_name %></p>
               <p class="text-sm text-gray-500 dark:text-gray-400"><%= current_user.username %></p>
-            </div>
+            <% end %>
           </div>
         </li>
          <li>
@@ -64,7 +64,7 @@
                       <ul id="dropdown-org-<%= organization.id %>" class="hidden py-2 space-y-2">
                         <% organization.boards.each do |board| %>
                           <li>
-                            <%= link_to board.name, organization_board_path(organization, board), class: "flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-16 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" %>
+                            <%= link_to board.name, organization_board_path(organization, board), class: "flex text-sm items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-16 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" %>
                           </li>
                         <% end %>
                       </ul>

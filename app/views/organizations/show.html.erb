@@ -89,7 +89,7 @@
            id="board-<%= board.id %>-content"
            role="tabpanel"
            aria-labelledby="board-<%= board.id %>-tab">
-        <%= render 'shared/board', board: board, lists: board.lists %>
+        <%= render 'shared/board', board: board, lists: board.lists.where.not(id: nil) %>
       </div>
     <% end %>
   </div>
