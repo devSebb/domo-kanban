@@ -3,3 +3,9 @@ import "@hotwired/turbo-rails"
 import "controllers";
 import "flowbite";
 import "./sortable_js";
+import "./fullcalendar";
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+
+$('#calendar').fullCalendar({});

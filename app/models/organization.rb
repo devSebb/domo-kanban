@@ -5,4 +5,12 @@ class Organization < ApplicationRecord
   has_many :boards, dependent: :destroy
 
   accepts_nested_attributes_for :memberships, reject_if: :all_blank
+
+  after_create :add_owner_as_member
+
+  private
+
+  def add_owner_as_member
+    memberships.create(user: owner, role: 'admin') unless memberships.exists?(user: owner)
+  end
 end

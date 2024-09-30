@@ -1,12 +1,9 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_organization, only: [ :show, :edit, :update, :destroy ]
-  # before_action :set_boards
 
   def index
-    @organizations = Organization.where(id: current_user.owned_organizations.pluck(:id))
-    .or(Organization.where(id: current_user.organizations.pluck(:id)))
-    .distinct
+    @organizations = current_user.all_organizations
   end
 
   def show
@@ -51,10 +48,6 @@ class OrganizationsController < ApplicationController
 
   def set_organization
     @organization = Organization.find(params[:id])
-  end
-
-  def set_boards
-    @boards = Board.where(organization_id: @organizations.pluck(:id))
   end
 
   def organization_params
