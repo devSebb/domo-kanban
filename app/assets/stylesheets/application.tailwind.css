@@ -3,12 +3,14 @@
 @tailwind utilities;
 @import "fullcalendar";
 
-@layer components {
+/* @layer components {
   body {
   font-family: 'Prompt', sans-serif;
-  /* background-color: #e1f4f0; */
-    @apply bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-50;
-  }
+  /*; */
+    /* @apply bg-gradient-to-br from-emerald-50 via-emerald-100 to-emerald-50; */
+
+body {
+  background-color: #e1f4f0
 }
 
 .btn{

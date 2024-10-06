@@ -46,3 +46,7 @@ config/.DS_Store
 lib/.DS_Store
 node_modules/.DS_Store
 test/.DS_Store
+
+
+#ignore brain.txt
+brain.txt
