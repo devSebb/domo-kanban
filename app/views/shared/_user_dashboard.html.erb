@@ -1,49 +1,49 @@
-  <div class="flex justify-between">
-    <div class="flex flex-col mb-6">
-    <h2 class="text-3xl font-bold mb-4">Welcome, <%= current_user.first_name %></h2>
-      <p class="text-gray-600">
-        <strong>Name:</strong> <%= "#{current_user.first_name} #{current_user.last_name}" %>
-      </p>
-      <p class="text-gray-600">
-        <strong>Username:</strong> <%= current_user.username %>
-      </p>
-      <p class="text-gray-600">
-        <strong>Email:</strong> <%= current_user.email %>
-      </p>
+  <div class="px-10 py-4">
+    <div class="flex justify-between">
+      <div class="flex flex-col mb-6">
+      <h2 class="text-3xl font-bold mb-4">Welcome, <%= current_user.first_name %></h2>
+        <p class="text-gray-600">
+          <strong>Name:</strong> <%= "#{current_user.first_name} #{current_user.last_name}" %>
+        </p>
+        <p class="text-gray-600">
+          <strong>Username:</strong> <%= current_user.username %>
+        </p>
+        <p class="text-gray-600">
+          <strong>Email:</strong> <%= current_user.email %>
+        </p>
+      </div>
+      <div>
+        <button class="bg-tertiary hover:bg-tertiary text-white font-bold py-2 px-4 rounded">
+          Edit Profile
+        </button>
+      </div>
     </div>
-    <div>
-      <button class="bg-tertiary hover:bg-tertiary text-white font-bold py-2 px-4 rounded">
-        Edit Profile
-      </button>
-    </div>
-  </div>
-
-<div class="flex justify-between">
-  <div class="p-6 bg-white rounded-lg shadow-md w-1/2">
-    <h3 class="text-2xl font-semibold  mb-4">Your Organizations</h3>
-    <div class="organizations-list">
-      <% @organizations.each_with_index do |organization, index| %>
-        <div class="organization-item mb-4">
-          <button id="dropdownButton<%= index %>" data-dropdown-toggle="dropdown<%= index %>" class="text-white bg-tertiary hover:bg-tertiary focus:ring-4 focus:outline-none focus:ring-tertiary font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  w-full justify-between" type="button">
-            <%= organization.name %>
-            <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-          </button>
-
-          <!-- Dropdown menu -->
-          <div id="dropdown<%= index %>" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 ">
-            <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownButton<%= index %>">
-              <% organization.boards.each do |board| %>
-                <li>
-                  <%= link_to board.name, organization_board_path(organization, board), class: "block px-4 py-2 hover:bg-gray-100 " %>
-                </li>
-              <% end %>
-            </ul>
+    <div class="flex justify-between">
+    <div class="p-6 bg-white rounded-lg shadow-md w-1/2">
+      <h3 class="text-2xl font-semibold  mb-4">Your Organizations</h3>
+      <div class="organizations-list">
+        <% @organizations.each_with_index do |organization, index| %>
+          <div class="organization-item mb-4">
+            <button id="dropdownButton<%= index %>" data-dropdown-toggle="dropdown<%= index %>" class="text-white bg-tertiary hover:bg-tertiary focus:ring-4 focus:outline-none focus:ring-tertiary font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  w-full justify-between" type="button">
+              <%= organization.name %>
+              <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div id="dropdown<%= index %>" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-1/2 ">
+              <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownButton<%= index %>">
+                <% organization.boards.each do |board| %>
+                  <li>
+                    <%= link_to board.name, organization_board_path(organization, board), class: "block px-4 py-2 hover:bg-gray-100 " %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+    </div>
+    <div class="flex"><div id="calendar"></div></div>
   </div>
-</div>
-<div class="flex"><div id="calendar"></div></div>

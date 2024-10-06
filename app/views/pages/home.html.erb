@@ -3,7 +3,7 @@
     <%= render "shared/user_dashboard" %>
   <% else %>
         <div class="flex flex-col items-center justify-center min-h-screen ; ">
-          <div class="my-20 flex flex-col items-center justify-center">
+          <div class="my-32 flex flex-col items-center justify-center">
             <%= image_tag "dome_logo.svg", width: 120, height: 120, alt: "Dome Kanban Logo" %>
             <h1 class="text-7xl font-semibold mt-6">Dome Kanban</h1>
             <p class="text-gray-600 mt-4 text-2xl text-center">A project management tool, for your peace of mind</p>
@@ -11,23 +11,23 @@
           </div>
 
       <!-- Features Section -->
-      <div class="mt-20 max-w-5xl w-full">
+      <div class="mt-28 max-w-5xl w-full">
         <!-- Feature 1 -->
-        <div class="flex flex-col md:flex-row items-center md:items-start my-12">
+        <div class="flex flex-col md:flex-row items-center md:items-start mb-32">
           <div class="md:w-1/2">
             <h2 class="text-4xl font-semibold">Effortless Organization</h2>
             <p class="text-gray-600 mt-4 text-xl">Manage your tasks seamlessly with our intuitive Kanban boards. Drag, drop, and prioritize with just a click.</p>
           </div>
-          <div class="md:w-1/2 mt-8 md:mt-0 md:ml-12">
+          <div class="md:w-1/2 mt-8 md:mt-0 flex justify-end">
             <%= image_tag "abstract_object_paris.png", alt: "Kanban Board", class: "w-1/2 h-auto" %>
           </div>
         </div>
 
         <!-- Feature 2 -->
-        <div class="flex flex-col md:flex-row-reverse items-center md:items-start mb-12">
+        <div class="flex flex-col md:flex-row-reverse items-center md:items-start mb-32">
           <div class="md:w-1/2">
-            <h2 class="text-4xl font-semibold">Seamless Team Communication</h2>
-            <p class="text-gray-600 mt-4 text-xl">Collaborate in real-time. Share updates, assign tasks, and keep everyone in the loop effortlessly.</p>
+            <h2 class="text-4xl font-semibold text-end">Seamless Team Communication</h2>
+            <p class="text-gray-600 mt-4 text-xl text-end">Collaborate in real-time. Share updates, assign tasks, and keep everyone in the loop effortlessly.</p>
           </div>
           <div class="md:w-1/2 mt-8 md:mt-0 md:mr-12">
             <%= image_tag "abstract_object.png", alt: "Team Collaboration", class: "w-1/2 h-auto" %>
@@ -35,22 +35,22 @@
         </div>
 
         <!-- Feature 3 -->
-        <div class="flex flex-col md:flex-row items-center md:items-start">
+        <div class="flex flex-col md:flex-row items-center md:items-start mb-12">
           <div class="md:w-1/2">
             <h2 class="text-4xl font-semibold">Accountability at Every Step</h2>
             <p class="text-gray-600 mt-4 text-xl">Hold your team accountable with transparent workflows. Track progress and meet every deadline.</p>
           </div>
-          <div class="md:w-1/2 mt-8 md:mt-0 md:ml-12">
+          <div class="md:w-1/2 mt-8 md:mt-0 flex justify-end">
             <%= image_tag "abstract_SimonLee.png", alt: "Accountability Feature", class: "w-1/2 h-auto" %>
           </div>
         </div>
       </div>
 
       <!-- Call to Action -->
-      <div class="mt-16 text-center">
+      <div class="mt-20 md:mt-40 text-center">
         <h2 class="text-5xl font-semibold">Ready to Elevate Your Project Management?</h2>
         <p class="text-gray-600 mt-4 text-2xl">Join teams worldwide who trust Dome Kanban.</p>
-        <%= button_to "Start Your Free Trial", new_user_registration_path, method: :get, class: "bg-tertiary text-white px-6 py-3 rounded-md mt-8 hover:bg-secondary transition duration-300" %>
+        <%= button_to "Start Your Free Trial", new_user_registration_path, method: :get, class: "bg-tertiary text-white px-6 py-3 rounded-md my-8 hover:bg-secondary transition duration-300" %>
 
         <div class="mt-20">
           <%= render "shared/footer" %>
