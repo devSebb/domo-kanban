@@ -7,8 +7,8 @@
     <div class="my-5">
       <div class="flex items-center">
         <h2 class="font-bold text-lg mr-2 text-start">Members</h2>
-        <button data-action="click->invite-form#toggleForm" class="text-blue-500 hover:text-blue-700">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <button data-action="click->invite-form#toggleForm" class=" hover:text-tertiary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
           </svg>
         </button>
@@ -19,8 +19,8 @@
             <% if membership.user.photo.attached? %>
               <%= image_tag membership.user.photo, class: "w-10 h-10 border-2 border-white rounded-full dark:border-gray-800" %>
             <% else %>
-              <div class="relative w-9 h-9 overflow-hidden bg-gray-100 border-2 border-white rounded-full dark:border-gray-800">
-                <svg class="absolute w-11 h-11 text-gray-400 -left-1.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+              <div class="relative w-10 h-10 overflow-hidden bg-gray-100 border-2 border-white rounded-full dark:border-gray-800">
+                <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
               </div>
             <% end %>
           <% end %>
@@ -92,7 +92,7 @@
           </li>
         <% end %>
       </div>
-      <%= link_to "Add a Board", new_organization_board_path(@organization), class: "text-center text-sm bg-gray-300 px-2 py-1 rounded-md w-32" %>
+      <%= link_to "Add a Board", new_organization_board_path(@organization), class: "text-center text-sm bg-gray-300 px-2 py-1 rounded-md w-32 mb-2" %>
     </ul>
   </div>
   <div id="default-styled-tab-content" class="mb-20">
