@@ -1,7 +1,7 @@
 <div class="mx-10">
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-2xl my-5">My Projects</h1>
-    <%= link_to "New", new_organization_path, class: "bg-secondary hover:scale-110 transition-all duration-300 text-tertiary font-bold py-2 px-4 rounded" %>
+    <%= link_to "New", new_organization_path, class: "bg-tertiary text-white hover:bg-secondary hover:text-tertiary hover:scale-110 transition duration-300 ease-in-out font-semibold py-2 px-4 rounded" %>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <% @organizations.each do |organization| %>
