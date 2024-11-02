@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <%= link_to "Log in", new_session_path(resource_name), class: "mx-autoinline-block w-1/2 bg-transparent border border-gray-900 text-gray-900 hover:text-white hover:bg-gray-900 font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out cursor-pointer text-center mb-2" %>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "mx-auto inline-block w-1/2 bg-transparent border border-gray-900 text-gray-900 hover:text-white hover:bg-gray-900 font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out cursor-pointer text-center mb-2" %>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
