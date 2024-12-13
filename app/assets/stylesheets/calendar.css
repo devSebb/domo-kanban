@@ -1,0 +1,25 @@
+.simple-calendar {
+  .calendar-heading {
+    @apply text-lg font-semibold mb-4;
+  }
+
+  .table {
+    @apply w-full;
+  }
+
+  .day {
+    @apply p-2 text-center border border-gray-200;
+  }
+
+  .wday-0, .wday-1, .wday-2, .wday-3, .wday-4, .wday-5, .wday-6 {
+    @apply bg-gray-50;
+  }
+
+  .today {
+    @apply bg-tertiary text-white;
+  }
+
+  .prev-month, .next-month {
+    @apply text-gray-400;
+  }
+}
