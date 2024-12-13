@@ -1,0 +1,8 @@
+<div class="message flex flex-col <%= message.sender == current_user ? 'items-end' : 'items-start' %> mb-4">
+  <div class="message-content <%= message.sender == current_user ? 'bg-tertiary text-white' : 'bg-white' %> rounded-lg px-4 py-2 max-w-[70%] break-words">
+    <%= message.content %>
+  </div>
+  <div class="message-meta text-xs text-gray-500 mt-1">
+    <small><%= message.created_at.strftime("%H:%M") %></small>
+  </div>
+</div>

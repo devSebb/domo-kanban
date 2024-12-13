@@ -9,3 +9,4 @@ import "./fullcalendar";
 //= require fullcalendar/locale-all
 
 $('#calendar').fullCalendar({});
+import "./channels"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
   root "pages#home"
   devise_for :users, controllers: { registrations: "users/registrations" }
 
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :messages, only: [ :index, :create ]
 
   resources :cards, only: [] do
     member do
