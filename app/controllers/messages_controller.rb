@@ -3,8 +3,27 @@ class MessagesController < ApplicationController
 
   def index
     @users = User.where.not(id: current_user.id)
-    @messages = Message.between_users(current_user.id, params[:user_id]) if params[:user_id]
-    @other_user = User.find(params[:user_id]) if params[:user_id]
+    if params[:user_id]
+      @messages = Message.between_users(current_user.id, params[:user_id])
+                        .order(created_at: :desc)
+                        .page(params[:page])
+                        .per(20)
+                        .reverse
+
+      @other_user = User.find(params[:user_id])
+
+      respond_to do |format|
+        format.html
+        format.json {
+          render json: {
+            messages: render_to_string(partial: "messages/message",
+                                     collection: @messages,
+                                     formats: [:html]),
+            has_more: @messages.total_pages > @messages.current_page
+          }
+        }
+      end
+    end
   end
 
   def create

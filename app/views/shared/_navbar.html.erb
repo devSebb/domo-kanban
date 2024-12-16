@@ -1,5 +1,5 @@
 <!-- drawer init and show -->
-<div class="flex items-center justify-between p-8" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+<button class="flex items-center justify-between p-8 w-full" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
   <div class="flex items-center gap-3 hover:scale-110 transition duration-300 ease-in-out">
     <%= image_tag "dome_logo.svg", alt: "logo", class: "w-8 h-8 cursor-pointer" %>
     <h1 class="text-2xl font-heading cursor-pointer">Dome</h1>
@@ -7,7 +7,7 @@
   <% if !user_signed_in? %>
     <%= link_to "Login", new_user_session_path, class: "text-gray-600 hover:text-tertiary hover:scale-110 transition duration-300 ease-in-out cursor-pointer" %>
   <% end %>
-</div>
+</button>
 
 <!-- drawer component -->
 <div id="drawer-navigation" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-64 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">

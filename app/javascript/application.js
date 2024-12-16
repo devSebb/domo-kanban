@@ -4,9 +4,9 @@ import "controllers";
 import "flowbite";
 import "./sortable_js";
 import "./fullcalendar";
+import "./channels"
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
 
 $('#calendar').fullCalendar({});
-import "./channels"
