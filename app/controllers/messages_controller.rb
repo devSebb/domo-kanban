@@ -12,13 +12,17 @@ class MessagesController < ApplicationController
 
       @other_user = User.find(params[:user_id])
 
+      # Mark messages as read using Ruby's select method instead of where
+      @messages.select { |m| m.recipient_id == current_user.id && m.read_at.nil? }
+              .each(&:mark_as_read!)
+
       respond_to do |format|
         format.html
         format.json {
           render json: {
             messages: render_to_string(partial: "messages/message",
                                      collection: @messages,
-                                     formats: [:html]),
+                                     formats: [ :html ]),
             has_more: @messages.total_pages > @messages.current_page
           }
         }

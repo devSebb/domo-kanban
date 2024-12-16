@@ -30,29 +30,33 @@
           <% end %>
         </div>
         <div class="organizations-list">
-          <% @organizations.each_with_index do |organization, index| %>
-            <div class="organization-item mb-4" data-controller="dropdown">
-              <button id="dropdownButton<%= index %>" data-dropdown-toggle="dropdown<%= index %>"
-                      class="text-white bg-tertiary hover:bg-tertiary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center w-full justify-between"
-                      type="button"
-                      data-dropdown-target="button">
-                <%= organization.name %>
-                <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                </svg>
-              </button>
-              <!-- Dropdown menu -->
-              <div id="dropdown<%= index %>" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-full"
-                   data-dropdown-target="menu">
-                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownButton<%= index %>">
-                  <% organization.boards.each do |board| %>
-                    <li>
-                      <%= link_to board.name, organization_board_path(organization, board), class: "block px-4 py-2 hover:bg-gray-100" %>
-                    </li>
-                  <% end %>
-                </ul>
+          <% if @organizations.present? %>
+            <% @organizations.each_with_index do |organization, index| %>
+              <div class="organization-item mb-4" data-controller="dropdown">
+                <button id="dropdownButton<%= index %>" data-dropdown-toggle="dropdown<%= index %>"
+                        class="text-white bg-tertiary hover:bg-tertiary focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center w-full justify-between"
+                        type="button"
+                        data-dropdown-target="button">
+                  <%= organization.name %>
+                  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdown<%= index %>" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-full"
+                     data-dropdown-target="menu">
+                  <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownButton<%= index %>">
+                    <% organization.boards.each do |board| %>
+                      <li>
+                        <%= link_to board.name, organization_board_path(organization, board), class: "block px-4 py-2 hover:bg-gray-100" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
               </div>
-            </div>
+            <% end %>
+          <% else %>
+            <p class="text-gray-500 text-center pt-20">No projects created yet.<br>Add your first project and see it displayed here</p>
           <% end %>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["messages"]
+  static targets = ["messages", "container"]
 
   connect() {
     this.element.addEventListener('scroll', this.handleScroll.bind(this))
@@ -27,6 +27,8 @@ export default class extends Controller {
   }
 
   loadMoreMessages() {
+    if (this.loading) return
+
     this.loading = true
     const userId = this.element.dataset.userId
     this.page += 1
@@ -37,16 +39,17 @@ export default class extends Controller {
         'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok')
+      return response.json()
+    })
     .then(data => {
       if (data.messages && data.messages.length > 0) {
         const currentScrollHeight = this.element.scrollHeight
         const scrollPosition = this.element.scrollTop
 
-        const messagesContainer = this.element.querySelector('#messages-container')
-        messagesContainer.insertAdjacentHTML('afterbegin', data.messages)
+        this.containerTarget.insertAdjacentHTML('afterbegin', data.messages)
 
-        // Maintain scroll position
         const newScrollHeight = this.element.scrollHeight
         this.element.scrollTop = scrollPosition + (newScrollHeight - currentScrollHeight)
 
@@ -54,10 +57,11 @@ export default class extends Controller {
       } else {
         this.hasMore = false
       }
-      this.loading = false
     })
     .catch(error => {
       console.error('Error loading messages:', error)
+    })
+    .finally(() => {
       this.loading = false
     })
   }
