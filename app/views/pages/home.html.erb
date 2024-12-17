@@ -2,55 +2,154 @@
   <% if user_signed_in? %>
     <%= render "shared/user_dashboard" %>
   <% else %>
-        <div class="flex flex-col items-center justify-center min-h-screen ; ">
-          <div class="my-32 flex flex-col items-center justify-center">
-            <%= image_tag "dome_logo.svg", width: 120, height: 120, alt: "Dome Kanban Logo" %>
-            <h1 class="text-7xl font-semibold mt-6">Dome Kanban</h1>
-            <p class="text-gray-600 mt-4 text-2xl text-center">A project management tool, for your peace of mind</p>
-            <%= button_to "Get Started for Free", new_user_registration_path, method: :get, class: "bg-tertiary text-white px-6 py-3 rounded-md mt-8 hover:bg-secondary hover:text-tertiary hover:scale-110 transition duration-300" %>
-          </div>
-
-      <!-- Features Section -->
-      <div class="mt-28 max-w-5xl w-full">
-        <!-- Feature 1 -->
-        <div class="flex flex-col md:flex-row items-center md:items-start mb-32">
-          <div class="md:w-1/2">
-            <h2 class="text-4xl font-semibold">Effortless Organization</h2>
-            <p class="text-gray-600 mt-4 text-xl">Manage your tasks seamlessly with our intuitive Kanban boards. Drag, drop, and prioritize with just a click.</p>
-          </div>
-          <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-            <%= image_tag "man1.png", alt: "Kanban Board", class: "w-1/2 h-auto" %>
-          </div>
+    <div class="flex flex-col items-center justify-center min-h-screen">
+      <!-- Enhanced Hero Section -->
+      <div class="relative w-full">
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="absolute top-20 left-20 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-20 right-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="flex flex-col md:flex-row-reverse items-center md:items-start mb-32">
-          <div class="md:w-1/2">
-            <h2 class="text-4xl font-semibold text-end">Seamless Team Communication</h2>
-            <p class="text-gray-600 mt-4 text-xl text-end">Collaborate in real-time. Share updates, assign tasks, and keep everyone in the loop effortlessly.</p>
+        <div class="relative my-32 flex flex-col items-center justify-center">
+          <!-- Animated Logo Container -->
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-tertiary to-secondary rounded-full blur opacity-25 group-hover:opacity-40 transition duration-500"></div>
+            <%= image_tag "dome_logo.svg", width: 120, height: 120, alt: "Dome Kanban Logo",
+                class: "relative transform hover:scale-105 transition-transform duration-300" %>
           </div>
-          <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center">
-            <%= image_tag "abstract_object_paris.png", alt: "Kanban Board", class: "w-1/2 h-auto" %>
-          </div>
-        </div>
 
-        <!-- Feature 3 -->
-        <div class="flex flex-col md:flex-row items-center mb-12">
-          <div class="md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-4xl font-semibold">Accountability at Every Step</h2>
-            <p class="text-gray-600 mt-4 text-xl">Hold your team accountable with transparent workflows. Track progress and meet every deadline.</p>
-          </div>
-          <div class="md:w-1/2 mt-8 md:mt-0 flex justify-center items-center">
-            <%= image_tag "man2.png", alt: "Accountability Feature", class: "w-auto h-[300px]" %>
+          <!-- Enhanced Typography -->
+          <h1 class="text-7xl font-bold mt-8 bg-gradient-to-r from-tertiary to-secondary bg-clip-text text-transparent
+              animate-gradient-x relative">
+            Dome Kanban
+          </h1>
+
+          <!-- Subtitle with Better Typography -->
+          <p class="text-gray-600 mt-6 text-2xl text-center max-w-2xl leading-relaxed">
+            A project management tool, for your
+            <span class="relative">
+              <span class="absolute -bottom-1 left-0 w-full h-1 bg-secondary/30"></span>
+              peace of mind
+            </span>
+          </p>
+
+          <!-- Enhanced CTA Button Group -->
+          <div class="flex flex-col items-center space-y-8">
+            <!-- Button Container -->
+            <div class="w-full flex justify-center">
+              <%= button_to new_user_registration_path, method: :get,
+                  class: "group relative inline-flex items-center justify-center my-10" do %>
+                <span class="absolute inset-0 bg-gradient-to-r from-tertiary to-secondary rounded-lg blur opacity-25
+                    group-hover:opacity-50 transition duration-300"></span>
+                <span class="relative px-8 py-4 bg-tertiary rounded-lg text-white font-semibold
+                    hover:bg-secondary hover:text-tertiary transform hover:scale-105 transition-all duration-300">
+                  Get Started for Free
+                  <svg class="w-5 h-5 ml-2 inline-block transform group-hover:translate-x-1 transition-transform duration-200"
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </span>
+              <% end %>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="flex flex-col items-center space-y-4 text-sm text-gray-500">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-tertiary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span>5,000+ Teams</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-tertiary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                </svg>
+                <span>Enterprise Ready</span>
+              </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="flex flex-col items-center animate-bounce mt-8">
+              <span class="text-gray-400 text-sm mb-2">Scroll to explore</span>
+              <svg class="w-6 h-6 text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Call to Action -->
-      <div class="mt-20 md:mt-40 text-center">
-        <h2 class="text-5xl font-semibold">Ready to Elevate Your Project Management?</h2>
-        <p class="text-gray-600 mt-4 text-2xl">Join teams worldwide who trust Dome Kanban.</p>
-        <%= button_to "Start Your Free Trial", new_user_registration_path, method: :get, class: "bg-tertiary text-white px-6 py-3 rounded-md my-8 hover:bg-secondary hover:text-tertiary hover:scale-110 transition duration-300" %>
+      <!-- Features Section -->
+      <div class="mt-40 max-w-7xl w-full px-4">
+        <!-- Feature Cards Container -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-32">
+          <!-- Feature 1 -->
+          <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-tertiary rounded-full p-4 shadow-lg">
+              <%= image_tag "man1.png", alt: "Kanban Board", class: "w-20 h-20 object-cover" %>
+            </div>
+            <div class="mt-12 text-center">
+              <h2 class="text-2xl font-bold mb-4">Effortless Organization</h2>
+              <p class="text-gray-600">Manage your tasks seamlessly with our intuitive Kanban boards. Drag, drop, and prioritize with just a click.</p>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-secondary rounded-full p-4 shadow-lg">
+              <%= image_tag "abstract_object_paris.png", alt: "Team Communication", class: "w-20 h-20 object-cover" %>
+            </div>
+            <div class="mt-12 text-center">
+              <h2 class="text-2xl font-bold mb-4">Seamless Communication</h2>
+              <p class="text-gray-600">Collaborate in real-time. Share updates, assign tasks, and keep everyone in the loop effortlessly.</p>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="group relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-tertiary rounded-full p-4 shadow-lg">
+              <%= image_tag "man2.png", alt: "Accountability Feature", class: "w-20 h-20 object-cover" %>
+            </div>
+            <div class="mt-12 text-center">
+              <h2 class="text-2xl font-bold mb-4">Smart Accountability</h2>
+              <p class="text-gray-600">Hold your team accountable with transparent workflows. Track progress and meet every deadline.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Redesigned Call to Action -->
+        <div class="relative mt-40 mb-20">
+          <div class="absolute inset-0 bg-gradient-to-r from-tertiary to-secondary opacity-10 rounded-3xl"></div>
+          <div class="relative bg-white/50 backdrop-blur-sm rounded-3xl p-16 shadow-xl">
+            <div class="max-w-3xl mx-auto text-center">
+              <h2 class="text-5xl font-bold bg-gradient-to-r from-tertiary to-secondary inline-block text-transparent bg-clip-text">
+                Ready to Elevate Your Project Management?
+              </h2>
+              <p class="text-gray-600 mt-6 text-xl">Join thousands of teams worldwide who trust Dome Kanban</p>
+
+              <div class="mt-10 flex flex-col items-center gap-6">
+                <%= button_to "Start Your Free Trial", new_user_registration_path, method: :get,
+                    class: "group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-tertiary rounded-xl overflow-hidden transition-all duration-300 hover:bg-secondary hover:scale-105" %>
+
+                <div class="flex items-center gap-8 mt-8">
+                  <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-tertiary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-600">Free 14-day trial</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <svg class="w-6 h-6 text-tertiary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-gray-600">No credit card required</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="mt-20">
           <%= render "shared/footer" %>

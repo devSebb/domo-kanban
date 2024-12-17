@@ -5,7 +5,7 @@
     <h1 class="text-2xl font-heading cursor-pointer">Dome</h1>
   </div>
   <% if !user_signed_in? %>
-    <%= link_to "Login", new_user_session_path, class: "text-gray-600 hover:text-tertiary hover:scale-110 transition duration-300 ease-in-out cursor-pointer" %>
+    <%= link_to "Login/ Sign Up", new_user_session_path, class: "text-gray-600 hover:text-tertiary hover:scale-110 transition duration-300 ease-in-out cursor-pointer" %>
   <% end %>
 </button>
 
@@ -79,12 +79,12 @@
          </li>
          <li>
             <a href="<%= new_organization_path %>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-              <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M3 6C3 4.34315 4.34315 3 6 3H14C15.6569 3 17 4.34315 17 6V14C17 15.6569 15.6569 17 14 17H6C4.34315 17 3 15.6569 3 14V6Z" />
                 <path stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M21 7V18C21 19.6569 19.6569 21 18 21H7" />
                 <path stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M10 10V7M10 10V13M10 10H13M10 10H7" />
               </svg>
-               <span class="flex-1 ms-3 whitespace-nowrap">New Project</span>
+               <span class="ms-3 whitespace-nowrap">New Project</span>
             </a>
          </li>
          <li>
