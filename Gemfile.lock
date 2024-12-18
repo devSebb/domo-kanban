@@ -373,7 +373,7 @@ DEPENDENCIES
   jbuilder
   kaminari
   momentjs-rails
-  pg (~> 1.1)
+  pg (~> 1.5.8)
   puma (>= 5.0)
   rails (~> 7.2.1)
   redis (>= 4.0.1)
