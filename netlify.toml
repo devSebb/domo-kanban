@@ -1,0 +1,13 @@
+[build]
+  command = "bundle install && bundle exec rails assets:precompile && bundle exec rails build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "16"
+
+[[plugins]]
+package = "@netlify/plugin-ruby-bundler"
+
+[build.packages]
+  libpq-dev = "latest"
+  postgresql-client = "latest"
